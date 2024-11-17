@@ -1,32 +1,52 @@
-import { createContext, useContext } from "react";
+import React, { createContext, useContext } from "react";
 import { useShoppingList } from "./ShoppingListProvider";
 
 const ItemContext = createContext();
 
 export const ItemProvider = ({ children }) => {
-    const { setShoppingList } = useShoppingList();
+  const { shoppingLists, setShoppingLists, currentListId } = useShoppingList();
 
+  // Функция для добавления нового элемента в текущий список
   const addItem = (itemName) => {
-    setShoppingList((prevList) => ({
-      ...prevList,
-      items: [...prevList.items, { id: Date.now().toString(), name: itemName, resolved: false }],
-    }));
+    setShoppingLists((prevLists) =>
+      prevLists.map((list) =>
+        list.id === currentListId
+          ? {
+              ...list,
+              items: [
+                ...list.items,
+                { id: Date.now().toString(), name: itemName, resolved: false },
+              ],
+            }
+          : list
+      )
+    );
   };
 
+  // Пример использования других функций
   const removeItem = (itemId) => {
-    setShoppingList((prevList) => ({
-      ...prevList,
-      items: prevList.items.filter((item) => item.id !== itemId),
-    }));
+    setShoppingLists((prevLists) =>
+      prevLists.map((list) =>
+        list.id === currentListId
+          ? { ...list, items: list.items.filter((item) => item.id !== itemId) }
+          : list
+      )
+    );
   };
 
   const toggleItemResolved = (itemId) => {
-    setShoppingList((prevList) => ({
-      ...prevList,
-      items: prevList.items.map((item) =>
-        item.id === itemId ? { ...item, resolved: !item.resolved } : item
-      ),
-    }));
+    setShoppingLists((prevLists) =>
+      prevLists.map((list) =>
+        list.id === currentListId
+          ? {
+              ...list,
+              items: list.items.map((item) =>
+                item.id === itemId ? { ...item, resolved: !item.resolved } : item
+              ),
+            }
+          : list
+      )
+    );
   };
 
   const value = {

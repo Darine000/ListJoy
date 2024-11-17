@@ -106,3 +106,52 @@ li {
 .input-group input {
     flex: 1;
 }
+
+.list-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.list-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.list-card:hover {
+    transform: translateY(-5px);
+}
+
+.list-card h5 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.list-card a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.list-card button {
+    margin-top: 10px;
+    display: block;
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.list-card button:hover {
+    background-color: #ff1a1a;
+}

@@ -1,13 +1,13 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { UserProvider } from "./UserProvider";
 import { ShoppingListProvider } from "./ShoppingListProvider";
 import { ItemProvider } from "./ItemProvider";
 import { MemberProvider } from "./MemberProvider";
 import UserSwitcher from "./UserSwitcher";
-import ListTitle from "./ListTitle";
-import MemberList from "./MemberList";
-import ItemList from "./ItemList";
-import './styles/styles.css'; 
+import HomePage from "./HomePage";
+import ListDetails from "./ListDetails";
+import './styles.css';
 
 function App() {
   return (
@@ -15,13 +15,20 @@ function App() {
       <ShoppingListProvider>
         <MemberProvider>
           <ItemProvider>
-            <div>
-              <h2>ListJoy</h2>
-              <UserSwitcher />
-              <ListTitle />
-              <MemberList />
-              <ItemList />
-            </div>
+            <Router>
+              <div>
+                <h2>
+                  <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+                    ListJoy
+                  </Link>
+                </h2>
+                <UserSwitcher />
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/list/:listId" element={<ListDetails />} />
+                </Routes>
+              </div>
+            </Router>
           </ItemProvider>
         </MemberProvider>
       </ShoppingListProvider>
