@@ -180,3 +180,13 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
 }
+
+.chart-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #C0C7CF;
+    color: #000000;
+}

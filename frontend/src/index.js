@@ -5,6 +5,8 @@ import { ShoppingListProvider } from "./List/ShoppingListProvider";
 import { UserProvider } from "./User/UserProvider";
 import { ThemeProvider } from "./UI/ThemeProvider";
 import './UI/i18n';
+import "./Chart/chartConfig";
+
 const container = document.getElementById("root");
 const root = createRoot(container);
 

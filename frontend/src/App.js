@@ -38,10 +38,6 @@ function App() {
                 <button onClick={() => changeLanguage("en")}>English</button>
                 <button onClick={() => changeLanguage("cs")}>Čeština</button>
                 <UserSwitcher />
-                <h4>Režim: {useMockData ? "Mock" : "Server"}</h4>
-                <button onClick={() => setUseMockData((prev) => !prev)}>
-                  Přepnutí na {useMockData ? "Server" : "Mock"}
-                </button>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/list/:listId" element={<ListDetails />} />
